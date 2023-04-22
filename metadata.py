@@ -1,4 +1,6 @@
-from sqlalchemy import MetaData, Table, Column, Integer, ForeignKey, String
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, ForeignKey, String
+
+engine = create_engine('sqlite+pysqlite:///:memory:', echo=True)
 
 metadata_obj = MetaData()
 
@@ -25,3 +27,6 @@ address_table = Table(
     Column("user_id", ForeignKey("user_account.id"), nullable=False),
     Column("email_address", String, nullable=False)
 )
+
+# emit DDL
+metadata_obj.create_all(engine)
