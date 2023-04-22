@@ -1,4 +1,7 @@
 from sqlalchemy import create_engine, text
+from sqlalchemy.orm import Session
+
+
 
 # Use an in-memory only SQLite database
 engine = create_engine('sqlite+pysqlite:///:memory:', echo=True)
@@ -17,15 +20,14 @@ with engine.begin() as conn:
     # conn.commit()
 
 
-with engine.connect() as conn:
-    students = conn.execute(text('SELECT * FROM students'))
-    # print(students.all())
+# with engine.connect() as conn:
+#     students_result = conn.execute(text('SELECT * FROM students WHERE id >= :minId'), { 'minId': 2000 })
+#     print(students_result.all())
 
-    # for id, name in students:
-    #     print(f'id: {id}, name: {name}')
 
-    # for row in students:
-    #     print(f'idx 0: {row[0]}, idx 1: {row[1]}, length: {len(row)}')
-
-    for row_dict in students.mappings():
-        print(f'row {row_dict}')
+with Session(engine) as session:
+    result = session.execute(text("SELECT * FROM students"))
+    for row in result:
+        print('row:', row)
+    session.commit()
+    
