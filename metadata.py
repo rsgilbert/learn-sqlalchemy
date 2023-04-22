@@ -12,12 +12,12 @@ user_table = Table(
     Column("fullname", String)
 )
 
-print(user_table)
-print(user_table.c)
-print(user_table.c.keys)
-print(user_table.c.name)
-print(user_table.c.fullname)
-print(user_table.primary_key)
+# print(user_table)
+# print(user_table.c)
+# print(user_table.c.keys)
+# print(user_table.c.name)
+# print(user_table.c.fullname)
+# print(user_table.primary_key)
 
 
 address_table = Table(
