@@ -19,5 +19,13 @@ with engine.begin() as conn:
 
 with engine.connect() as conn:
     students = conn.execute(text('SELECT * FROM students'))
-    print(students.all())
+    # print(students.all())
 
+    # for id, name in students:
+    #     print(f'id: {id}, name: {name}')
+
+    # for row in students:
+    #     print(f'idx 0: {row[0]}, idx 1: {row[1]}, length: {len(row)}')
+
+    for row_dict in students.mappings():
+        print(f'row {row_dict}')
