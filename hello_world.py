@@ -7,4 +7,3 @@ with engine.connect() as conn:
     result = conn.execute(text("SELECT 'hello world'"))
     print(result.all())
 
-
