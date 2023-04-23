@@ -28,3 +28,10 @@ with engine.connect() as conn:
     conn.execute(insert(user_table)) # inserts default values only
     print(insert(user_table))
 
+print(insert(user_table).values(name='john',fullname='aga', id=1).compile(engine))
+
+with engine.connect() as conn:
+    stmt = insert(user_table).values(name="Peter", fullname="Peter Mugerwa").returning(user_table.c.fullname, user_table.c.name)
+    print(stmt)
+    result = conn.execute(stmt)
+    print(result.all())

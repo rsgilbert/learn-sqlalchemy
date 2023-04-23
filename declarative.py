@@ -1,6 +1,6 @@
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, ForeignKey, String
+from sqlalchemy import create_engine, insert, MetaData, Table, Column, Integer, ForeignKey, String
 from typing import Optional, List
 
 
@@ -41,6 +41,7 @@ Base.metadata.create_all(engine)
 
 user = User(fullname="Jonathan", name="Peter")
 print(user)
+
 
 
 

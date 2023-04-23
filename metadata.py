@@ -30,3 +30,4 @@ address_table = Table(
 
 # emit DDL
 metadata_obj.create_all(engine)
+
